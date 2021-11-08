@@ -56,4 +56,13 @@ let roxyCoin = new Blockchain();
 roxyCoin.addBlock(new Block(1, "01/01/2022", {amount: 4}));
 roxyCoin.addBlock(new Block(2, "01/02/2022", {amount: 10}));
 
-console.log(JSON.stringify(roxyCoin, null, 4));
+//console.log(JSON.stringify(roxyCoin, null, 4));
+
+// Check if chain is valid (will return true)
+//console.log('Blockchain valid? ' + roxyCoin.isChainValid());
+
+// Let's now manipulate the data
+//roxyCoin.chain[1].data = { amount: 14 };
+
+// Check our chain again (will now return false)
+//console.log("Blockchain valid? " + roxyCoin.isChainValid());
