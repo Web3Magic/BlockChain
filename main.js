@@ -18,7 +18,36 @@ class Block{
 // Constructor will initialize the chain but there needs to be a first block on the chain. 
 class Blockchain{
   constructor(){
-
+    this.chain = [this.createGenesisBlock()];
   }
-  //beed a method to create the first block the Genisis Block as it is called.
+  //Need a method to create the first block the Genisis Block as it is called.
+  createGenesisBlock(){
+    return new Block(0, "11/08/2021", "0");
+  }
+  //Medthod to the last block in the chain
+  getLatestBlock(){
+  return this.chain[this.chain.length - 1];
+  }
+  //Method to add a new block to the chain
+  addBlock(newBlock){
+    newBlock.previousHash = this.getLatestBlock().hash;
+    newBlock.hash = newBlock.calculateHash();
+    this.chain.push(newBlock);
+  }
+  //Method to check to see if the block is valid on the blockchain
+  isChainValid(){
+    for (let i= 1; i < this.chain.length; i++){
+      const currentBlock = this.chain[i];
+      const previousBlock = this.chain[i -1];
+
+      if (currentBlock.hash !== currentBlock.calculateHash()){
+        return false;      
+      }
+
+      if (currentBlock.previousHash !== previousBlock.hash){
+        return false;
+      }
+    }
+    return true;
+  }
 }
