@@ -51,3 +51,9 @@ class Blockchain{
     return true;
   }
 }
+
+let roxyCoin = new Blockchain();
+roxyCoin.addBlock(new Block(1, "01/01/2022", {amount: 4}));
+roxyCoin.addBlock(new Block(2, "01/02/2022", {amount: 10}));
+
+console.log(JSON.stringify(roxyCoin, null, 4));
